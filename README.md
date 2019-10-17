@@ -12,9 +12,9 @@ Upcoming operators to overload are as follows:
 
 3) ==
 
-4) >=
+4) '>='
 
-5) >
+5) '>'
 
 6) <=
 
@@ -26,4 +26,4 @@ Upcoming operators to overload are as follows:
 
 10) <<
 
-11) >>
+11) '>>'
