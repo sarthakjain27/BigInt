@@ -6,24 +6,24 @@ Presently I have overloaded the binary + and - operator so that the BigInteger o
 
 Upcoming operators to overload are as follows:
 
-*
+1) *
 
-!
+2) !
 
-==
+3) ==
 
->=
+4) >=
 
->
+5) >
 
-<=
+6) <=
 
-<
+7) <
 
-++ (pre/post)
+8) ++ (pre/post)
 
--- (pre/post)
+9) -- (pre/post)
 
-<<
+10) <<
 
->>
+11) >>
