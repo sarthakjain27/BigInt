@@ -6,7 +6,7 @@ Presently I have overloaded the binary + and - operator so that the BigInteger o
 
 Upcoming operators to overload are as follows:
 
-1) *
+1) '*'
 
 2) !
 
