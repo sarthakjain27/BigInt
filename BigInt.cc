@@ -134,10 +134,6 @@ BigInt operator+(const BigInt& f,const BigInt& s)
     if(carry!=0)
         res.insert(res.begin(),carry);
 
-    for(int k=0;k<res.size() && res[0]==0;k++)
-    {
-        res.erase(res.begin());
-    }
     BigInt ans(res);
     if(bothNegative)
         ans.positive= false;
@@ -231,14 +227,88 @@ BigInt operator-(const BigInt& f,const BigInt& s)
         i--;
         j--;
     }
-    for(int k=0;k<res.size() && res[0]==0;k++)
-    {
-        res.erase(res.begin());
-    }
 
     BigInt ans(res);
     ans.positive=!negresult;
     return ans;
+}
+
+BigInt operator*(const BigInt& f,const BigInt& s)
+{
+    int n1=f.digits.size();
+    int n2=s.digits.size();
+    bool negResult=false;
+    if((!f.positive && s.positive) || (f.positive && !s.positive))
+        negResult=true;
+    vector<int> res;
+    for(int i=0;i<n1+n2;i++)
+        res.push_back(0);
+
+    for(int i=n1-1,count=0;i>=0;i--,count++)
+    {
+        vector<int> each;
+        int carry=0;
+        for(int k=0;k<count;k++)
+        {
+            each.insert(each.begin(),0);
+        }
+        for(int j=n2-1;j>=0;j--)
+        {
+            int sum=carry+s.digits[j]*f.digits[i];
+            carry=sum/10;
+            sum%=10;
+            each.insert(each.begin(),sum);
+        }
+        if(carry!=0)
+            each.insert(each.begin(),carry);
+
+        int resp=n1+n2-1,eachp=each.size()-1;
+        carry=0;
+        while(resp>=0 || eachp>=0)
+        {
+            int a=resp>=0?res[resp]:0;
+            int b=eachp>=0?each[eachp]:0;
+            int sum=a+carry+b;
+            carry=sum/10;
+            sum%=10;
+            res[resp]=sum;
+            resp--;
+            eachp--;
+        }
+    }
+
+    BigInt ans(res);
+    if(negResult)
+        ans.positive=false;
+    return ans;
+}
+
+bool operator!(const BigInt &f)
+{
+    return f.digits[0] != 0;
+}
+
+bool operator==(const BigInt& f,const BigInt& s)
+{
+    if(f.positive && !s.positive)
+        return false;
+    else if(!f.positive && s.positive)
+        return false;
+    else
+    {
+        int n1=f.digits.size()-1;
+        int n2=s.digits.size()-1;
+        if(n1!=n2)
+            return false;
+        while(n1>=0 && n2>=0)
+        {
+            if(f.digits[n1]!=s.digits[n2])
+                return false;
+            n1--;
+            n2--;
+        }
+        return true;
+    }
 }
 
 void BigInt::printBigInt() {
