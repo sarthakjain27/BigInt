@@ -29,6 +29,10 @@ public:
     friend BigInt operator*(const BigInt& first, const BigInt& second);
     friend bool operator!(const BigInt& first);
     friend bool operator==(const BigInt& first,const BigInt& second);
+    friend bool operator>=(const BigInt& first,const BigInt& second);
+    friend bool operator>(const BigInt& first,const BigInt& second);
+    friend bool operator<(const BigInt& first,const BigInt& second);
+    friend bool operator<=(const BigInt& first,const BigInt& second);
 };
 
 #endif //ASSIGNMENT8_BIGINT_H

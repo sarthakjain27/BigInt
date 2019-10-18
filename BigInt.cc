@@ -311,6 +311,74 @@ bool operator==(const BigInt& f,const BigInt& s)
     }
 }
 
+bool operator>(const BigInt& f,const BigInt& s)
+{
+    if(f.positive && !s.positive)
+        return true;
+    else if(!f.positive && s.positive)
+        return false;
+    else if(f.positive && s.positive)
+    {
+        int n1=f.digits.size()-1;
+        int n2=s.digits.size()-1;
+        if(n2>n1)
+            return false;
+        else if(n1>n2)
+            return true;
+        else{
+            int i=0,j=0;
+            while(i<=n1 && j<=n2)
+            {
+                if(f.digits[i]>s.digits[j])
+                    return true;
+                else if(f.digits[i]<s.digits[j])
+                    return false;
+                i++;
+                j++;
+            }
+            return false;
+        }
+    }
+    else
+    {
+        int n1=f.digits.size()-1;
+        int n2=s.digits.size()-1;
+        if(n2>n1)
+            return true;
+        else if(n1>n2)
+            return false;
+        else{
+            int i=0,j=0;
+            while(i<=n1 && j<=n2)
+            {
+                if(f.digits[i]>s.digits[j])
+                    return false;
+                else if(f.digits[i]<s.digits[j])
+                    return true;
+                i++;
+                j++;
+            }
+            return false;
+        }
+    }
+}
+
+
+bool operator>=(const BigInt& f,const BigInt& s)
+{
+    return ((f==s) || (f>s));
+}
+
+bool operator<(const BigInt& f,const BigInt& s)
+{
+    return s>f;
+}
+
+bool operator<=(const BigInt& f,const BigInt& s)
+{
+    return ((f==s) || (s>f));
+}
+
 void BigInt::printBigInt() {
     if(positive)
         cout<<"Number is positive and digits are: ";
