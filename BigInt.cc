@@ -89,8 +89,8 @@ BigInt::BigInt(char* init_char, int n) {
 }
 
 BigInt::~BigInt() {
-    cout<<"Destructor called for:  ";
-    printBigInt();
+    //cout<<"Destructor called for:  ";
+    //printBigInt();
 }
 
 BigInt operator+(const BigInt& f,const BigInt& s)
@@ -379,6 +379,36 @@ bool operator<=(const BigInt& f,const BigInt& s)
     return ((f==s) || (s>f));
 }
 
+BigInt operator++(BigInt& f)
+{
+    vector<int> one={1};
+    BigInt add_one(one);
+    f=f+add_one;
+    return f;
+}
+
+BigInt operator--(BigInt& f)
+{
+    vector<int> one={1};
+    BigInt sub_one(one);
+    f=f-sub_one;
+    return f;
+}
+
+BigInt operator++(BigInt& f,int num)
+{
+    const BigInt temp=f;
+    ++f;
+    return temp;
+}
+
+BigInt operator--(BigInt& f,int num)
+{
+    const BigInt temp=f;
+    --f;
+    return temp;
+}
+
 void BigInt::printBigInt() {
     if(positive)
         cout<<"Number is positive and digits are: ";
@@ -390,6 +420,8 @@ void BigInt::printBigInt() {
     }
     cout<<endl;
 }
+
+
 
 
 

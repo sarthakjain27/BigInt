@@ -4,7 +4,7 @@ int main() {
     vector<int> a={0,0,0,-1,2,3,4};
     vector<char> b={'-','1','2','3'};
     vector<char> c={'1','2','3'};
-    char d[]="345";
+    char d[]="-1";
     char e[]="123456";
     BigInt aa(a);
     aa.printBigInt();
@@ -12,7 +12,7 @@ int main() {
     bb.printBigInt();
     BigInt cc(c);
     cc.printBigInt();
-    BigInt dd(d,3);
+    BigInt dd(d,2);
     dd.printBigInt();
 
     BigInt ee(e,6);
@@ -53,4 +53,21 @@ int main() {
     cout<<"Doing <= "<<endl;
     bool res8=(cc<=dd);
     cout<<res8<<endl;
+
+    cout<<"Doing prefix ++"<<endl;
+    ++dd;
+    dd.printBigInt();
+
+    cout<<"Doing prefix --" <<endl;
+    --dd;
+    dd.printBigInt();
+
+    cout<<"Doing postfix ++"<<endl;
+    BigInt res9=dd++;
+    res9.printBigInt();
+
+    cout<<"Doing postfix --" <<endl;
+    BigInt res10=dd--;
+    res10.printBigInt();
+
 }

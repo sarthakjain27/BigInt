@@ -33,6 +33,10 @@ public:
     friend bool operator>(const BigInt& first,const BigInt& second);
     friend bool operator<(const BigInt& first,const BigInt& second);
     friend bool operator<=(const BigInt& first,const BigInt& second);
+    friend BigInt operator++(BigInt& first);
+    friend BigInt operator--(BigInt& first);
+    friend BigInt operator++(BigInt& first,int num);
+    friend BigInt operator--(BigInt& first,int num);
 };
 
 #endif //ASSIGNMENT8_BIGINT_H
