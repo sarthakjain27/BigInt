@@ -7,32 +7,32 @@ int main() {
     char d[]="-1";
     char e[]="123456";
     BigInt aa(a);
-    aa.printBigInt();
+    cout<<aa;
     BigInt bb(b);
-    bb.printBigInt();
+    cout<<bb;
     BigInt cc(c);
-    cc.printBigInt();
+    cout<<cc;
     BigInt dd(d,2);
-    dd.printBigInt();
+    cout<<dd;
 
     BigInt ee(e,6);
     //Copy Constructor called for 123456
     BigInt ff(ee);
-    ee.printBigInt();
-    ff.printBigInt();
+    cout<<ee;
+    cout<<ff;
 
 
     cout<<"Doing addition"<<endl;
     BigInt res=aa+aa;
-    res.printBigInt();
+    cout<<res;
 
     cout<<"Doing Subtraction"<<endl;
     BigInt res2=aa-aa;
-    res2.printBigInt();
+    cout<<res2;
 
     cout<<"Doing multiplication"<<endl;
     BigInt res3=dd*cc;
-    res3.printBigInt();
+    cout<<res3;
 
     cout<<"Doing == "<<endl;
     bool res4=(cc==bb);
@@ -56,18 +56,25 @@ int main() {
 
     cout<<"Doing prefix ++"<<endl;
     ++dd;
-    dd.printBigInt();
+    cout<<dd;
 
     cout<<"Doing prefix --" <<endl;
     --dd;
-    dd.printBigInt();
+    cout<<dd;
 
     cout<<"Doing postfix ++"<<endl;
     BigInt res9=dd++;
-    res9.printBigInt();
+    cout<<res9;
 
     cout<<"Doing postfix --" <<endl;
     BigInt res10=dd--;
-    res10.printBigInt();
+    cout<<res10;
 
+    cout<<"Overloaded << operator"<<endl;
+    cout<<aa;
+
+    BigInt input;
+    cout<<"Overloaded >> operator"<<endl;
+    cin>>input;
+    cout<<input;
 }

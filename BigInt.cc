@@ -5,6 +5,11 @@
 
 #include "BigInt.h"
 
+BigInt::BigInt()
+{
+    positive=true;
+}
+
 BigInt::BigInt(const vector<int>& init_dig) {
     positive=true;
     int start=0;
@@ -409,16 +414,31 @@ BigInt operator--(BigInt& f,int num)
     return temp;
 }
 
-void BigInt::printBigInt() {
-    if(positive)
-        cout<<"Number is positive and digits are: ";
-    else
-        cout<<"Number is negative and digits are: ";
-    for(int & digit : digits)
+ostream& operator<<( ostream& output, const BigInt &first )
+{
+    output<<"Number is positive(1)/negative(0)="<<first.positive<<" :";
+    for(const int& digit:first.digits)
     {
-        cout<<digit;
+        output<<digit;
     }
-    cout<<endl;
+    output<<endl;
+    return output;
+}
+
+istream& operator>>( istream& input, BigInt &first )
+{
+    cout<<"Enter the number"<<endl;
+    char ch;
+    vector<char> input_digits;
+    while(!input.eof())
+    {
+        ch=input.get();
+        if(ch==' '||ch=='\n'||ch=='\t')
+            break;
+        input_digits.push_back(ch);
+    }
+    first=BigInt(input_digits);
+    return input;
 }
 
 
