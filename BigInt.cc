@@ -5,6 +5,7 @@
 
 #include "BigInt.h"
 
+
 BigInt::BigInt()
 {
     positive=true;
@@ -44,7 +45,11 @@ BigInt::BigInt(const vector<char>& init_char) {
     }
     else if(init_char[start]=='+')
         start++;
-
+    if(start==init_char.size())
+    {
+        cerr<<"Enter a valid number"<<endl;
+        return;
+    }
     //Skipping leading zeros
     while(start<init_char.size() && init_char[start]=='0')
     {
@@ -58,7 +63,17 @@ BigInt::BigInt(const vector<char>& init_char) {
     else{
         for(int i=start;i<init_char.size();i++)
         {
+            if(!(init_char[i]>='0' && init_char[i]<='9'))
+            {
+                cerr<<"Enter a valid number"<<endl;
+                return;
+            }
             digits.push_back(init_char[i]-'0');
+        }
+        if(digits.empty())
+        {
+            cerr<<"Enter a valid number"<<endl;
+            return;
         }
     }
 }
@@ -75,12 +90,16 @@ BigInt::BigInt(char* init_char, int n) {
     {
         start++;
     }
+    if(start==n)
+    {
+        cerr<<"Enter a valid number"<<endl;
+        return;
+    }
     //Skipping leading zeros
     while(start<n && init_char[start]=='0')
     {
         start++;
     }
-
     if(start==n)
     {
         digits.push_back(0);
@@ -88,7 +107,17 @@ BigInt::BigInt(char* init_char, int n) {
     else{
         for(int i=start;i<n;i++)
         {
+            if(!(init_char[i]>='0' && init_char[i]<='9'))
+            {
+                cerr<<"Enter a valid number"<<endl;
+                return;
+            }
             digits.push_back(init_char[i]-'0');
+        }
+        if(digits.empty())
+        {
+            cerr<<"Enter a valid number"<<endl;
+            return;
         }
     }
 }
@@ -430,14 +459,36 @@ istream& operator>>( istream& input, BigInt &first )
     cout<<"Enter the number"<<endl;
     char ch;
     vector<char> input_digits;
+    ch=input.get();
+    if(ch!='-' && ch!='+' && !(ch>='0' && ch<='9'))
+    {
+        cerr<<"Please enter a valid number"<<endl;
+        return input;
+    }
+    bool isNegative=ch=='-';
+    if(ch!='-' && ch!='+')
+        input_digits.push_back(ch);
     while(!input.eof())
     {
         ch=input.get();
-        if(ch==' '||ch=='\n'||ch=='\t')
+        if(ch=='\n')
             break;
+        if(!(ch>='0' && ch<='9'))
+        {
+            cerr<<"Please enter a valid number"<<endl;
+            return input;
+        }
         input_digits.push_back(ch);
     }
+    if(input_digits.size()==0)
+    {
+        cerr<<"Please enter a valid number"<<endl;
+        return input;
+    }
     first=BigInt(input_digits);
+    first.positive=false;
+    cout<<"You entered the following number"<<endl;
+    cout<<first;
     return input;
 }
 

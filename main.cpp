@@ -2,7 +2,7 @@
 
 int main() {
     vector<int> a={0,0,0,-1,2,3,4};
-    vector<char> b={'-','1','2','3'};
+    vector<char> b={'-','+','1','2','3'};
     vector<char> c={'1','2','3'};
     char d[]="-1";
     char e[]="123456";
@@ -76,5 +76,4 @@ int main() {
     BigInt input;
     cout<<"Overloaded >> operator"<<endl;
     cin>>input;
-    cout<<input;
 }
