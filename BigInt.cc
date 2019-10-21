@@ -1,10 +1,17 @@
-//
-// Created by Sarthak Jain on 10/17/19.
+
+//Student Name: Sarthak Jain
+// Student ID: 014508013
 // GID: 22 (Twenty Two)
-//
+
+/*
+ *    Things left to do
+ *
+ * 1. Output of BigInt. Negative positive number representation with first dig sign '-' in case of negative.
+ * 2. Remove of non-parameterised constructor and destructor
+ * 3. Sanity Check
+ */
 
 #include "BigInt.h"
-
 
 BigInt::BigInt()
 {
@@ -330,9 +337,13 @@ BigInt operator*(const BigInt& f,const BigInt& s)
     return ans;
 }
 
+/*
+ * ! (NOT) operator should return true if the value of BigInt is Zero (0). Since 0 is considered false, and thus ! of false is true
+ * It will return false otherwise if the value of BigInt is non zero. Since non-zero is true and thus ! (NOT) of non-zero is false;
+ */
 bool operator!(const BigInt &f)
 {
-    return f.digits[0] != 0;
+    return f.digits[0] == 0;
 }
 
 bool operator==(const BigInt& f,const BigInt& s)

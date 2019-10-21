@@ -1,7 +1,7 @@
-//
-// Created by Sarthak Jain on 10/17/19.
+
+// Student Name: Sarthak Jain
+// Student ID: 014508013
 // GID: 22 (Twenty Two)
-//
 
 #ifndef ASSIGNMENT8_BIGINT_H
 #define ASSIGNMENT8_BIGINT_H
