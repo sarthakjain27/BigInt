@@ -1,8 +1,8 @@
 #include "BigInt.h"
 
 int main() {
-    vector<int> a={0,0,0,-1,2,3,4};
-    vector<char> b={'-','+','1','2','3'};
+    vector<int> a={-1,0,0,-1};
+    vector<char> b={'-','1','2','3'};
     vector<char> c={'1','2','3'};
     char d[]="-1";
     char e[]="123456";

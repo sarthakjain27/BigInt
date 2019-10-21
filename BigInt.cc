@@ -24,13 +24,26 @@ BigInt::BigInt(const vector<int>& init_dig) {
         digits.push_back(0);
     }
     else{
-        if(init_dig[start]<0){
+        if(init_dig[start]<0 && start==0){
             positive=false;
+            if(init_dig[start]<-9)
+            {
+                cerr << "Please enter a valid number. Only single digits are allowed" << endl;
+                exit(0);
+            }
             digits.push_back(-1*init_dig[start]);
             start++;
         }
-       for(int i=start;i<init_dig.size();i++)
+       for(int i=start;i<init_dig.size();i++) {
+           if (init_dig[i] < 0 && i != 0) {
+               cerr << "Please enter a valid number. Negative number should only be as first element of vector" << endl;
+               exit(0);
+           } else if (init_dig[i] >= 10) {
+               cerr << "Please provide each digit as a separate integer." << endl;
+               exit(0);
+           }
            digits.push_back(init_dig[i]);
+       }
     }
 }
 
