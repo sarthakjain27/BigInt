@@ -6,18 +6,10 @@
 /*
  *    Things left to do
  *
- * 1. Output of BigInt. Negative positive number representation with first dig sign '-' in case of negative.
- * 2. Remove of non-parameterised constructor and destructor
- * 3. Sanity Check
  * 4. need to remove cerr
  */
 
 #include "BigInt.h"
-
-BigInt::BigInt()
-{
-    positive=true;
-}
 
 BigInt::BigInt(const vector<int>& init_dig) {
     positive=true;
@@ -27,27 +19,27 @@ BigInt::BigInt(const vector<int>& init_dig) {
     if(init_dig.size()>1 && init_dig[0]==0)
     {
         cerr<<"Please enter a valid number with no leading zeros"<<endl;
-        exit(0);
+        exit(1);
     }
 
     if(init_dig[start]<0){
-        positive=false;
         if(init_dig[start]<-9)
         {
             cerr << "Please enter a valid number. Only single digits are allowed" << endl;
-            exit(0);
+            exit(1);
         }
+        positive=false;
         digits.push_back(-1*init_dig[start]);
         start++;
     }
 
    for(int i=start;i<init_dig.size();i++) {
-       if (init_dig[i] < 0 && i != 0) {
+       if (init_dig[i] < 0) {
            cerr << "Please enter a valid number. Negative number should only be as first element of vector" << endl;
-           exit(0);
+           exit(1);
        } else if (init_dig[i] >= 10) {
            cerr << "Please provide each digit as a separate integer." << endl;
-           exit(0);
+           exit(1);
        }
        digits.push_back(init_dig[i]);
    }
@@ -67,18 +59,18 @@ BigInt::BigInt(const vector<char>& init_char) {
     if(start==init_char.size())
     {
         cerr<<"Enter a valid number with some digits"<<endl;
-        exit(0);
+        exit(1);
     }
 
     if(start==0 && init_char[start]=='0' && init_char.size()>1)
     {
         cerr<<"Please enter input without leading zeros"<<endl;
-        exit(0);
+        exit(1);
     }
     else if(start==1 && init_char[start]=='0')
     {
         cerr<<"Zero given with positive/negative symbol"<<endl;
-        exit(0);
+        exit(1);
     }
 
     for(int i=start;i<init_char.size();i++)
@@ -86,14 +78,14 @@ BigInt::BigInt(const vector<char>& init_char) {
         if(!(init_char[i]>='0' && init_char[i]<='9'))
         {
             cerr<<"Enter a valid number with characters between 0 & 9 inclusive"<<endl;
-            exit(0);
+            exit(1);
         }
         digits.push_back(init_char[i]-'0');
     }
     if(digits.empty())
     {
         cerr<<"Enter atleast one digit"<<endl;
-        exit(0);
+        exit(1);
     }
 }
 
@@ -112,17 +104,17 @@ BigInt::BigInt(char* init_char, int n) {
     if(start==n)
     {
         cerr<<"Enter a valid number with some digits"<<endl;
-        exit(0);
+        exit(1);
     }
     if(start==0 && init_char[start]=='0' && n>1)
     {
         cerr<<"Please enter input without leading zeros"<<endl;
-        exit(0);
+        exit(1);
     }
     else if(start==1 && init_char[start]=='0')
     {
         cerr<<"Zero given with positive/negative symbol"<<endl;
-        exit(0);
+        exit(1);
     }
 
     for(int i=start;i<n;i++)
@@ -130,14 +122,14 @@ BigInt::BigInt(char* init_char, int n) {
         if(!(init_char[i]>='0' && init_char[i]<='9'))
         {
             cerr<<"Enter a valid number with characters between 0 & 9 inclusive"<<endl;
-            exit(0);
+            exit(1);
         }
         digits.push_back(init_char[i]-'0');
     }
     if(digits.empty())
     {
         cerr<<"Enter atleast one digit"<<endl;
-        exit(0);
+        exit(1);
     }
 
 }
@@ -496,7 +488,6 @@ ostream& operator<<( ostream& output, const BigInt &first )
 
 istream& operator>>( istream& input, BigInt &first )
 {
-    cout<<"Enter the number"<<endl;
     char ch;
     vector<char> input_digits;
     ch=input.get();
@@ -524,7 +515,6 @@ istream& operator>>( istream& input, BigInt &first )
         return input;
     }
     first=BigInt(input_digits);
-    cout<<first;
     return input;
 }
 

@@ -1,8 +1,8 @@
 #include "BigInt.h"
 
 int main() {
-    vector<int> a={9,9,9};
-    vector<char> b={'-','1','2','3'};
+    vector<int> a={-9,9,9};
+    vector<char> b={'-','9','9','9'};
     vector<char> c={'1','2','3'};
     char d[]="-1";
     char e[]="123456";
@@ -56,7 +56,6 @@ int main() {
     cout<<aa<<" Postfix --: "<<(aa--)<<endl;
     cout<<"After postfix --: "<<aa<<endl;
 
-    BigInt input;
     cout<<"Overloaded >> operator"<<endl;
-    cin>>input;
+    cin>>aa;
 }
