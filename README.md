@@ -26,6 +26,6 @@ The following operators has been overloaded you can see the definition in .h fil
 
 11) '>>'
 
-12) +
+12) '+'
 
-13) -
+13) '-'
