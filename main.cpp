@@ -1,77 +1,60 @@
 #include "BigInt.h"
 
 int main() {
-    vector<int> a={-1,0,0,-1};
+    vector<int> a={9,9,9};
     vector<char> b={'-','1','2','3'};
     vector<char> c={'1','2','3'};
     char d[]="-1";
     char e[]="123456";
     BigInt aa(a);
-    cout<<aa;
+    cout<<aa<<endl;
     BigInt bb(b);
-    cout<<bb;
+    cout<<bb<<endl;
     BigInt cc(c);
-    cout<<cc;
+    cout<<cc<<endl;
     BigInt dd(d,2);
-    cout<<dd;
-
+    cout<<dd<<endl;
     BigInt ee(e,6);
-    //Copy Constructor called for 123456
-    BigInt ff(ee);
-    cout<<ee;
-    cout<<ff;
-
+    cout<<ee<<endl;
 
     cout<<"Doing addition"<<endl;
-    BigInt res=aa+aa;
-    cout<<res;
+    cout<<aa<<" + "<<aa<<" : "<<(aa+aa)<<endl;
 
     cout<<"Doing Subtraction"<<endl;
-    BigInt res2=aa-aa;
-    cout<<res2;
+    cout<<aa<<" - "<<aa<<" : "<<(aa-aa)<<endl;
 
     cout<<"Doing multiplication"<<endl;
-    BigInt res3=dd*cc;
-    cout<<res3;
+    cout<<dd<<" * "<<aa<<" : "<<(dd*aa)<<endl;
 
     cout<<"Doing == "<<endl;
-    bool res4=(cc==bb);
-    cout<<res4<<endl;
+    cout<<cc<<" == "<<bb<<" : "<<(cc==bb)<<endl;
 
     cout<<"Doing > "<<endl;
-    bool res5=(aa>aa);
-    cout<<res5<<endl;
+
+    cout<<aa<<" > "<<aa<<" : "<<(aa>aa)<<endl;
 
     cout<<"Doing >= "<<endl;
-    bool res6=(aa>=aa);
-    cout<<res6<<endl;
+    cout<<aa<<" >= "<<aa<<" : "<<(aa==aa)<<endl;
 
     cout<<"Doing < "<<endl;
-    bool res7=(dd<cc);
-    cout<<res7<<endl;
+    cout<<dd<<" < "<<cc<<" : "<<(dd<cc)<<endl;
 
     cout<<"Doing <= "<<endl;
-    bool res8=(cc<=dd);
-    cout<<res8<<endl;
+    cout<<cc<<" <= "<<dd<<" : "<<(cc<=dd)<<endl;
 
     cout<<"Doing prefix ++"<<endl;
-    ++dd;
-    cout<<dd;
+    cout<<aa<<" Prefix ++: "<<(++aa)<<endl;
 
     cout<<"Doing prefix --" <<endl;
-    --dd;
-    cout<<dd;
+    cout<<aa<<" Prefix --: "<<(--aa)<<endl;
 
     cout<<"Doing postfix ++"<<endl;
-    BigInt res9=dd++;
-    cout<<res9;
+    cout<<aa<<" Postfix ++: "<<(aa++)<<endl;
+    cout<<"After postfix ++: "<<aa<<endl;
 
     cout<<"Doing postfix --" <<endl;
-    BigInt res10=dd--;
-    cout<<res10;
-
-    cout<<"Overloaded << operator"<<endl;
-    cout<<aa;
+    cout<<aa<<" Postfix --: "<<(aa--)<<endl;
+    cout<<"After postfix --: "<<aa<<endl;
 
     BigInt input;
     cout<<"Overloaded >> operator"<<endl;

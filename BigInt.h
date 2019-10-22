@@ -23,7 +23,6 @@ public:
     BigInt(const vector<int>& init_dig);
     BigInt(const vector<char>& init_char);
     BigInt(char* init_arr,int n);
-    ~BigInt();
     friend BigInt operator+(const BigInt& first, const BigInt& second);
     friend BigInt operator-(const BigInt& first, const BigInt& second);
     friend BigInt operator*(const BigInt& first, const BigInt& second);
