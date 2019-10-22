@@ -2,9 +2,7 @@
 
 This repository defines my implementation of a BigInteger Class in C++. We can initialize the BigInteger class either by passing number as a vector of single digit integers, a vector of character representing single digit integers and a c-array characters of single digit integers. 
 
-Presently I have overloaded the binary + and - operator so that the BigInteger operations with these operators gets performed as normal integers would do. 
-
-Upcoming operators to overload are as follows:
+The following operators has been overloaded you can see the definition in .h file and their implementation in .cc file
 
 1) '*'
 
@@ -27,3 +25,7 @@ Upcoming operators to overload are as follows:
 10) <<
 
 11) '>>'
+
+12) +
+
+13) -
